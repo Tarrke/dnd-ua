@@ -102,3 +102,10 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# vim temp files
+*.swp
+
+# temp files and out files
+*.html
+*.pdf
