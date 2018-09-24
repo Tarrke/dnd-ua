@@ -4,13 +4,16 @@ Simple script to DL all pdf then make a collection of them. All Copyrigths to WO
 
 Written in python by Tarrke.
 
-## Installation
+
+## Installation
 
 ```bash
 pip install -r requirements
 ./ua-dl.py
 ```
 
-## Usage
+
+## Usage
+
 
 ## Libraries
