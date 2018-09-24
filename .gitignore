@@ -108,3 +108,4 @@ venv.bak/
 
 # temp files and out files
 output/
+.vscode
