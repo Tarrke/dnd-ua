@@ -23,8 +23,8 @@ print('Hello World')
 
 ############################
 # Main Configuration Section
-main_url = "http://dnd.wizards.com/articles-tags/unearthed-arcana"
 base_url = "http://dnd.wizards.com"
+main_url = base_url + "/articles-tags/unearthed-arcana"
 # End of Section
 ############################
 
@@ -64,6 +64,9 @@ if not os.path.exists(directory):
 
 for article in articles:
     print('Looking for pdf for article', article)
+    if 'feature' in article:
+        print('NOT LOOKING INTO', article)
+        continue
     download_file(article, 'tmp.html')
     html2 = open('tmp.html').read()
     soup2 = bs.BeautifulSoup(html2, 'lxml')
