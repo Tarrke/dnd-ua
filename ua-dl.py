@@ -19,6 +19,10 @@ def download_file(url, file_name):
         shutil.copyfileobj(response, out_file)
     return out_file
 
+def class_cta_or_cta_button(css_class):
+    """Selector for bs4"""
+    return css_class == "cta" or css_class == "cta-button"
+
 print('Hello World')
 
 ############################
@@ -64,13 +68,16 @@ if not os.path.exists(directory):
 
 for article in articles:
     print('Looking for pdf for article', article)
-    if 'feature' in article:
+    # review meens lot of things to look into...
+    if 'review' in article:
         print('NOT LOOKING INTO', article)
         continue
     download_file(article, 'tmp.html')
     html2 = open('tmp.html').read()
     soup2 = bs.BeautifulSoup(html2, 'lxml')
-    pdf_link = soup2.find('a', attrs={'class':'cta-button'})['href']
+    contents = soup2.find('div', attrs={'id':'content'})
+    #pdf_link = soup2.find('a', attrs={'class':'cta-button'})['href']
+    pdf_link = contents.find('a', class_=class_cta_or_cta_button)['href']
     pdf_tab = pdf_link.rsplit('/', 1)
     print(pdf_tab)
     pdf_name = pdf_tab.pop()
